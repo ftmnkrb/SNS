@@ -1,0 +1,108 @@
+<div>
+  <p class="fw-bold" style="padding: 24px 24px 0px 24px;">Welcome. <br>Only a few steps left..</p>
+
+  <mat-stepper orientation="vertical" linear #stepper>
+
+    <mat-step [stepControl]="nameFG">
+      <form [formGroup]="nameFG">
+        <ng-template matStepLabel>Fill out your name</ng-template>
+        <mat-form-field appearance="fill" class="mt-2 w-100">
+          <mat-label>Full Name</mat-label>
+          <input matInput placeholder="First name and Last Name" formControlName="name" required />
+        </mat-form-field>
+        <div>
+          <button mat-raised-button color="primary" matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="universityFG">
+      <form [formGroup]="universityFG">
+        <ng-template matStepLabel>Your University Name</ng-template>
+        <mat-form-field class="example-full-width mt-2 w-100" appearance="fill">
+          <mat-label>University Name</mat-label>
+          <input type="text" matInput formControlName="university" [matAutocomplete]="auto1" required minlength="10">
+          <mat-autocomplete #auto1="matAutocomplete">
+            <mat-option *ngFor="let option of filteredUniversities | async" [value]="option.name">
+              {{option.name}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <div>
+          <button mat-raised-button color="accent" class="me-2" matStepperPrevious>Back</button>
+          <button mat-raised-button color="primary" matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="departmentFG">
+      <form [formGroup]="departmentFG">
+        <ng-template matStepLabel>Fill out your department</ng-template>
+        <mat-form-field appearance="fill" class="mt-2 w-100">
+          <mat-label>Department</mat-label>
+          <input matInput formControlName="department" placeholder="Ex. Computer Engineering" required />
+        </mat-form-field>
+        <div>
+          <button mat-raised-button color="accent" class="me-2" matStepperPrevious>Back</button>
+          <button mat-raised-button color="primary" matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="classFG">
+      <form [formGroup]="classFG">
+        <ng-template matStepLabel>Choose your class</ng-template>
+        <mat-form-field appearance="fill" class="mt-2 w-100">
+          <mat-label>Class</mat-label>
+          <mat-select formControlName="class" required>
+            <mat-option value="1">1</mat-option>
+            <mat-option value="2">2</mat-option>
+            <mat-option value="3">3</mat-option>
+            <mat-option value="4">4</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div>
+          <button mat-raised-button color="accent" class="me-2" matStepperPrevious>Back</button>
+          <button mat-raised-button color="primary" matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="descriptionFG" optional>
+      <form [formGroup]="descriptionFG">
+        <ng-template matStepLabel>Tell about yourself</ng-template>
+        <mat-form-field appearance="fill" class="mt-2 w-100" >
+          <mat-label>About You</mat-label>
+          <textarea matInput formControlName="description"></textarea>
+        </mat-form-field>
+        <div>
+          <button mat-raised-button color="accent" class="me-2" matStepperPrevious>Back</button>
+          <button mat-raised-button color="primary" matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <!-- <mat-step [stepControl]="photoUrlFG" [optional]="true">
+      <form class="example-form" [formGroup]="photoUrlFG">
+        <ng-template matStepLabel>Upload your profile photo.</ng-template>
+        <div class="mt-2">
+          <app-upload [desc]="'Upload Photo'" (onUploadFinished)="uploadFinished($event)"></app-upload>
+        </div>
+        <div *ngIf="profilePhotoPath.length > 0">
+          <img [src]="profilePhotoPath" alt="profile-picture" style="width: 80%;">
+        </div>
+      </form>
+    </mat-step> -->
+
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-raised-button color="accent" class="me-2" matStepperPrevious>Back</button>
+        <button mat-raised-button color="primary" (click)="updateUser()">Finish</button>
+      </div>
+    </mat-step>
+
+    
+  </mat-stepper>
+</div>

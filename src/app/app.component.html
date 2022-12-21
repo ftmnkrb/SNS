@@ -1,0 +1,19 @@
+<div class="mat-app-background" [ngClass]="{'dark': isDarkMode}" >
+    <div [ngClass]="{'pe-none': loading}">
+        <router-outlet></router-outlet>
+    </div>
+
+    <div *ngIf="loading" class="waiting-container">
+        <mat-spinner></mat-spinner>
+    </div>
+
+    <div class="theme-toggle">
+        <button *ngIf="isDarkMode" (click)="changeTheme(false)" class="btn p-0">
+            <i class="bi bi-sun-fill fs-4 text-white"></i>
+        </button>
+        
+        <button *ngIf="!isDarkMode" (click)="changeTheme(true)" class="btn p-0">
+            <i class="bi bi-moon-fill fs-4"></i>
+        </button>
+    </div>
+</div>

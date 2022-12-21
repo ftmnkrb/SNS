@@ -1,0 +1,44 @@
+<form [formGroup]="registerForm" (ngSubmit)="register()">
+    <div class="p-4">
+
+        <h2 class="fw-bold mb-3 text-center">REGISTER</h2>
+
+        <div class="example-container">
+            <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" formControlName="email" required>
+                <!-- <mat-error *ngIf="username?.invalid">{{getErrorMessage()}}</mat-error> -->
+            </mat-form-field>
+        </div>
+
+        <div class="example-container">
+            <mat-form-field appearance="fill" class="w-100">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" formControlName="password" minlength="8" required>
+                <mat-error *ngIf="password?.dirty && password?.value.length > 0 && password?.value.length < 8">
+                    Password must be at least 8 characters
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="example-container">
+            <mat-form-field appearance="fill" class="w-100">
+                <mat-label>RePassword</mat-label>
+                <input matInput type="password" formControlName="repassword" required>
+                <mat-hint class="text-danger"
+                    *ngIf="repassword?.dirty && repassword?.value.length > 0 && repassword?.value != password?.value">
+                    Passwords do not match!
+                </mat-hint>
+            </mat-form-field>
+        </div>
+
+        <div class="d-flex flex-column ">
+            <button mat-raised-button color="accent" class="mb-2" type="submit">Register</button>
+            <span>
+                Do you have an account?
+                <a routerLink="/">Login</a>
+            </span>
+        </div>
+
+    </div>
+</form>

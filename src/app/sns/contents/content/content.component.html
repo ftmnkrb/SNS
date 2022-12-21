@@ -1,0 +1,37 @@
+<mat-card class="example-card">
+    <mat-card-header class="mb-2 row">
+        <div class="col-3 m-0">
+            <button mat-fab [color]="user?.localId == content?.userDto?.localId ? 'primary':'accent'" class="fs-4">
+                {{getContentHeader(content?.userDto?.name!)}}
+            </button>
+        </div>
+
+        <div class="col-9 m-0 content-user-info">
+            <ul>
+                <li class="fw-bold">{{content?.userDto?.name}}</li>
+                <li>{{content?.userDto?.university}}</li>
+                <li>{{content?.userDto?.department}}</li>
+                <li>{{content?.userDto?.class}}</li>
+            </ul>
+        </div>
+    </mat-card-header>
+    <hr>
+
+    <mat-card-content class="mb-3">
+        <mat-chip-listbox>
+            <mat-chip> {{content?.department}}</mat-chip>
+            <mat-chip> {{content?.lesson}}</mat-chip>
+            <mat-chip> {{content?.class}}.Class</mat-chip>
+        </mat-chip-listbox>
+    </mat-card-content>
+
+    <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+    <mat-card-content>
+        <p style="word-wrap: break-word;" [innerHTML]="content?.description"></p>
+    </mat-card-content>
+
+    <button class="delete-content" *ngIf="user?.localId == content?.userDto?.localId" mat-raised-button color="warn"
+        matTooltip="Delete" (click)="deleteContent(content)">
+        <i class="bi bi-trash"></i>
+    </button>
+</mat-card>

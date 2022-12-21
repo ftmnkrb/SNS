@@ -1,0 +1,10 @@
+<div *ngIf="user" class="example-button-container my-2">
+    <button (click)="logout()" mat-fab color="warn" class="m-0 p-0 d-flex align-items-center justify-content-center"
+        style="width: 35px; height: 35px;" matTooltip="Logout">
+        <i class="bi bi-door-closed"></i>
+    </button>
+
+    <button mat-fab color="primary" aria-label="Example icon button with a delete icon" class="fs-4 ms-3">
+        {{getProfileInfoText(user.name!)}}
+    </button>
+</div>

@@ -1,0 +1,68 @@
+.mat-app-background {
+    background: url("/assets/images/auth/bg.jpg") no-repeat;
+    background-size: cover;
+    background-position: bottom;
+    min-height: 100vh;
+    position: relative;
+
+    &:before {
+        content: '';
+        height: 100% !important;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-image: linear-gradient(to bottom right, #002f4b, #db5f46);
+        opacity: .6;
+    }
+}
+
+.mat-app-background.dark {
+    &:before {
+        background-image: linear-gradient(to bottom right, #002f4b, #000);
+    }
+}
+
+.waiting-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+
+    background-color: #888;
+    opacity: 0.5;
+
+    min-width: 100vw;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 9999;
+}
+
+.theme-toggle {
+    .btn {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        animation-name: show;
+        animation-duration: 0.7s;
+
+        &:focus {
+            border: none;
+        }
+    }
+}
+
+@keyframes show {
+    from {
+        top: -50px;
+    }
+
+    to {
+        top: 5px;
+    }
+}
