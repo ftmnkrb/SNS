@@ -1,0 +1,45 @@
+<mat-card class="p-2">
+    <form class="row m-0" [formGroup]="editProfileForm" (ngSubmit)="updateProfile()">
+        <h4 class="fw-bold">Update Profile</h4>
+        <hr>
+    
+        <mat-form-field appearance="fill" class="mt-2 col-md-6">
+            <mat-label>Full Name</mat-label>
+            <input matInput placeholder="First name and Last Name" formControlName="name" required />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width mt-2 col-md-6" appearance="fill">
+            <mat-label>University Name</mat-label>
+            <input type="text" matInput formControlName="university" [matAutocomplete]="auto1" required minlength="10">
+            <mat-autocomplete #auto1="matAutocomplete">
+                <mat-option *ngFor="let option of filteredUniversities | async" [value]="option.name">
+                    {{option.name}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="mt-2 col-md-6">
+            <mat-label>Department</mat-label>
+            <input matInput formControlName="department" placeholder="Ex. Computer Engineering" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="mt-2 col-md-6">
+            <mat-label>Class</mat-label>
+            <mat-select formControlName="class" required>
+                <mat-option value="1">1</mat-option>
+                <mat-option value="2">2</mat-option>
+                <mat-option value="3">3</mat-option>
+                <mat-option value="4">4</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="mt-2">
+            <mat-label>About You</mat-label>
+            <textarea matInput formControlName="description"></textarea>
+        </mat-form-field>
+
+        <div>
+            <button mat-raised-button color="primary" type="submit">Update Profile</button>
+        </div>
+    </form>
+</mat-card>

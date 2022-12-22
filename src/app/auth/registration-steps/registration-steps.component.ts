@@ -9,7 +9,7 @@ import { UserService } from 'src/app/shared/services/user.service';
 import { AuthService } from '../auth.service';
 import { UserDto } from '../models/UserDto';
 
-import uniData from './university.json';
+import uniData from '../../shared/university.json';
 
 @Component({
   selector: 'registration-steps',
